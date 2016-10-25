@@ -53,11 +53,11 @@ void main_passingdata()
     
     GetData(infile, scores, length);
     
-    bool passing_grades[length];
+    bool passing_grades[100];
     ProcessData(passing_grades, scores, length);
     
     //Print to stdout
-    cout << "Total Number of Grandes in the file " << length << endl;
+    cout << "Total Number of Grandes in the file: " << length << endl;
     for(int i = 0 ; i < length; ++i)
         (true == passing_grades[i]) ? cout << scores[i] << " : passed\n" : cout << scores[i] << ": failed" <<endl ;
 

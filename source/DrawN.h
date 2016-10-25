@@ -29,6 +29,7 @@ void assignN(char N [10][10])
     for (int r = 0; r < 10; r++)
         N[r][0] = N[r][r] = N[r][9] = 'N';
 }
+
 void drawN(char N[10][10])
 {
     for (int r = 0; r < 10; r++) {
@@ -38,7 +39,6 @@ void drawN(char N[10][10])
         }
         cout << "" << endl;
     }
-    
 }
 
 void main_drawn()
