@@ -1,10 +1,8 @@
-//
-//  DrawN.cpp
-//  example
-//
-//  Created by Jason Vega on 10/20/16.
-//  Copyright © 2016 Jason Vega. All rights reserved.
-//
+// DrawN.cpp
+// Created by
+// Vega, Jason	      : vegaj32@mail.broward.edu
+// Yep, Eben 	        : yepea4@bconline.broward.edu
+// Dominguez, Michael : domim35@bconline.broward.edu
 #pragma once
 #include <stdio.h>
 #include <iostream>
@@ -46,7 +44,7 @@ void main_drawn()
     char n[10][10];
     assignN(n);
     drawN(n);
-    
+
     //better way, no memory allocation
     //printN(10);
 }
