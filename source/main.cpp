@@ -14,7 +14,6 @@
 using namespace std;
 int main(int argc, const char * argv[])
 {
-
     //main_student();
     //main_drawn();
     //main_passingdata();
