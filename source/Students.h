@@ -15,7 +15,6 @@ struct FullName
     string lastname;
     string firstname;
     string midInitial;
-    
 };
 
 struct Student
