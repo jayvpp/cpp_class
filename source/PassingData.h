@@ -20,9 +20,9 @@ void GetData(ifstream& infile, int scores[], int& length)
         length++;
 }
 
-void ProcessData(bool passing [],int scores[], int lenght)
+void ProcessData(bool passing [],int scores[], int length)
 {
-    for(int i = 0 ; i < lenght ; ++i)
+    for(int i = 0; i < length; ++i)
     {
         if(scores[i] >= 60)
             passing[i] = 1;
@@ -36,8 +36,8 @@ void main_passingdata()
     int scores[100];
     int length = 0;
     
-    //This store the default location of the file on my Mac System.
-    //I will ask for file_path, in case nothing is provided I will use the default one.
+    //This will store the default location of the file.
+    //We will ask for file_path, in case nothing is provided we will use the default one.
     string file_path;
     cout << "Enter full file path of the .txt file you want to process." << endl;
     getline(cin, file_path);
