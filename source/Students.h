@@ -12,10 +12,6 @@ struct FullName
     string lastname;
     string firstname;
     string midInitial;
-<<<<<<< HEAD
-
-=======
->>>>>>> 8a8c2a89ae5c25e43d6651ba9658c5f4bfcf0c49
 };
 
 struct Student
