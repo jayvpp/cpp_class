@@ -7,12 +7,12 @@
 using namespace std;
 string time::to_standard_time() const
 {
-	string s;
+	std::stringstream s;
 	int hr = (h > 12) ? h - 12 : h;
 	string period = (h >= 12) ? "PM" : "AM";
 
-	s = std::to_string(hr) + ":" + std::to_string(m) + period;
-	return s;
+	s << std::setw(2) << std::setfill('0') << ::to_string(hr) << ":" << std::setw(2) << std::setfill('0') << std::to_string(m) << period;
+	return s.str();
 }
 void time::set_hours(int hours)
 {
