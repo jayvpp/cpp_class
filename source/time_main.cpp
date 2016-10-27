@@ -13,13 +13,13 @@ int main()
 	time t7(4, 5);
 
 	assert(t0.print_time() == "11:59AM");
-	assert(t1.print_time() == "12:0PM");
+	assert(t1.print_time() == "12:00PM");
 	assert(t2.print_time() == "10:51PM");
-	assert(t3.print_time() == "12:5PM");
-	assert(t4.print_time() == "1:13AM");
-	assert(t5.print_time() == "1:20PM");
-	assert(t6.print_time() == "5:20PM");
-	assert(t7.print_time() == "4:5AM");
+	assert(t3.print_time() == "12:05PM");
+	assert(t4.print_time() == "01:13AM");
+	assert(t5.print_time() == "01:20PM");
+	assert(t6.print_time() == "05:20PM");
+	assert(t7.print_time() == "04:05AM");
 
 	return 1;
 }
