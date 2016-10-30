@@ -16,7 +16,7 @@ string time::to_standard_time() const
 }
 void time::set_hours(int hours)
 {
-	string error = "Invalid parameter, hours should be greater than 0 and smaller than 23.";
+	string error = "Invalid parameter, hours should be greater than 0 and smaller than 24.";
 	if (hours < 0 || hours > 23) { cout << error << endl; throw runtime_error(error); }
 	h = hours;
 }
