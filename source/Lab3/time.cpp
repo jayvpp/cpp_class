@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string> 
 #include <numeric>
+#include <sstream> 
+#include <iomanip>
 using namespace std;
 string time::to_standard_time() const
 {
