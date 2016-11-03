@@ -31,7 +31,7 @@ void ImageProcessor::write_output(const std::string & output_path)
 	}
 }
 
-void ImageProcessor::processing_algorith()
+void ImageProcessor::processing_algorithm()
 {
 	const double min_sum = min_light_value * 5;
 	for (size_t hp = 0; hp < h; hp++)
@@ -53,7 +53,7 @@ ImageProcessor::ImageProcessor(const std::string & input_path)
 
 void ImageProcessor::ProcessImage(const std::string & output)
 {
-	processing_algorith();
+	processing_algorithm();
 	write_output(output);
 }
 
