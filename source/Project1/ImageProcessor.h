@@ -19,7 +19,7 @@ private:
 	void read_file(const std::string & input_path);
 	void write_output(const std::string& output_path);
 
-	void processing_algorith();
+	void processing_algorithm();
 
 public:
    
