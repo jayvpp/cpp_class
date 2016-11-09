@@ -20,13 +20,29 @@
 
 int main()
 {
-	CharStack aStack(8);
+	CharStack aStack(5);
 
-	// Testing member functions of Stack
+	// Testing that stack isEmpty
+	cout << "Stack is "; 
 	aStack.display();
-	aStack.push(12);
-	aStack.push(24);
+
+	// Testing push to stack
+	aStack.push('a');
+	aStack.push('b');
+	aStack.push('c');
+	aStack.push('d');
+	aStack.push('e');
 	aStack.display();
+
+	// Test if stack is full
+	cout << endl;
+	aStack.push('f');
+	
+	// Testing pop of stack
+	printf("\nPop = %c\n", aStack.pop());
+
+	// Testing peek of stack
+	printf("Peek = %c\n", aStack.peek());
 
 	system("pause");
 }
