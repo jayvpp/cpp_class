@@ -27,9 +27,11 @@ public:
 	{
 		return top == (stackSize - 1);
 	}
+
 	void push(int ele) 
 	{
-		if (!isFull()) {
+		if (!isFull()) 
+		{
 			top++;
 			theStack[top] = ele;
 		}
