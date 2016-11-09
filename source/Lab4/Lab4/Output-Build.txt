@@ -1,0 +1,6 @@
+﻿1>------ Build started: Project: Lab4, Configuration: Debug Win32 ------
+1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (CharStack.vcxproj, MyCharStack.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+1>  stdafx.cpp
+1>  MyCharStack.cpp
+1>  MyCharStack.vcxproj -> C:\Users\eyep.DCSW\Google Drive\2016School\COP2335C\cpp_class\cpp_class\Lab4\Debug\Lab4.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
