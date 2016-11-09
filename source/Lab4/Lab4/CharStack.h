@@ -5,14 +5,18 @@ using namespace std;
 
 class CharStack
 {
+	class StackFullException: public std::exception {}; // exception handling for full stack
+	class StackPeekEmptyException : public std::exception { }; // exception handling for emtpy stack
+	class StackPopEmptyException : public std::exception { }; // exception handling for emtpy stack
+
 private:
-	int stackSize = 0; // size of the stack
+	size_t stackSize = 0; // size of the stack
 	int top = -1; // index of the top element in the stack
 	char *theStack = nullptr;
 
 public:
 	//CharStack() {} // We would have to pass the size in with a default constructor
-	CharStack(char size) {
+	CharStack(size_t size) {
 		stackSize = size;
 		theStack = new char[size]; // initialize to the size
 		top = -1;// top is at the bottom
@@ -30,13 +34,14 @@ public:
 
 	void push(int ele) 
 	{
-		if (!isFull()) 
+		if (!isFull())
 		{
 			top++;
 			theStack[top] = ele;
 		}
 		else
-			cout << "No more push it is full" << endl;
+			throw StackFullException();
+			//cout << "No more push it is full" << endl;
 	}
 
 	int pop() 
@@ -46,17 +51,19 @@ public:
 			return theStack[top--];
 		}
 		else
-			cout << "No more pop, it is empty" << endl;
+			throw StackPopEmptyException();
+			//cout << "No more pop, it is empty" << endl;
 	}
 
 	int peek() 
 	{
-		if (!isEmpty()) {
-
+		if (!isEmpty())
+		{
 			return theStack[top];
 		}
 		else
-			cout << "No more pop, it is empty" << endl;
+			throw StackPeekEmptyException();
+			//cout << "No more peek, it is empty" << endl;
 	}
 	
 	void display() 
@@ -67,7 +74,6 @@ public:
 		{
 			for (int i = top; i >= 0; i--)
 				cout << theStack[i] << endl;
-			cout << "A Stack" << endl;
 		}
 	}
 };

@@ -17,32 +17,87 @@
 
 #include "stdafx.h"
 #include "CharStack.h"
+#include <cassert>
+
+using namespace std;
+
+bool test_push();
+bool test_pop();
+bool test_peek();
 
 int main()
 {
 	CharStack aStack(5);
 
 	// Testing that stack isEmpty
-	cout << "Stack is "; 
-	aStack.display();
+	cout << "Push test passed: " << test_push() << endl;
+	cout << "Pop test passed: " << test_pop() << endl;
+	cout << "Peek test passed: " << test_peek() << endl;
+	system("pause");
+}
 
-	// Testing push to stack
+bool test_push() {
+	CharStack aStack(400);
+
 	aStack.push('a');
 	aStack.push('b');
 	aStack.push('c');
 	aStack.push('d');
-	aStack.push('e');
-	aStack.display();
 
-	// Test if stack is full
-	cout << endl;
-	aStack.push('f');
-	
-	// Testing pop of stack
-	printf("\nPop = %c\n", aStack.pop());
+	try
+	{
+		aStack.push('e');
+	}
+	catch (std::exception& e)
+	{
+		cout << "Push Test passed, we cannot push anymore, exception called!" << endl;
+		return true;
+	}
 
-	// Testing peek of stack
-	printf("Peek = %c\n", aStack.peek());
+	return false;
+};
 
-	system("pause");
+bool test_pop() {
+	CharStack aStack(2);
+
+	aStack.push('a');
+	aStack.push('b');
+
+	assert(aStack.pop() == 'b');
+	assert(aStack.pop() == 'a');
+
+	try
+	{
+		aStack.pop();
+	}
+	catch (std::exception& e)
+	{
+		cout << "Pop Test passed, we cannot pop anymore, exception called!" << endl;
+		return true;
+	}
+
+	return false;
+};
+
+bool test_peek() {
+	CharStack aStack(2);
+
+	aStack.push('a');
+	aStack.push('b');
+
+	assert(aStack.peek() == 'b');
+	assert(aStack.pop() == 'b');
+	assert(aStack.peek() == 'a');
+
+	try
+	{
+		aStack.peek();
+	}
+	catch (std::exception& e)
+	{
+		cout << "Pop Test passed, we cannot pop anymore, exception called!" << endl;
+		return true;
+	}
+
+	return false;
 }
