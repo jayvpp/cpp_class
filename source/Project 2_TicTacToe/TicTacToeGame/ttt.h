@@ -2,30 +2,47 @@
 #include <string>
 #include <memory>
 #include <iostream>
-enum Symbol
+#include <vector>
+
+enum Symbol { X, O, Empty };
+enum WinnerStatus { Player1, Player2, InProgress, Tie };
+
+
+
+
+
+class Match
 {
-	X,
-	O,
-	Empty
+private:
+	int AmountOfTieGames;
+	int AmountOfRoundsPlayed;
+public:
+	Match() :  AmountOfTieGames(0), AmountOfRoundsPlayed(0) {};
+
+	void IncrementTieGames() { AmountOfTieGames++; }
+	void IncrementRoundsPlayed() { AmountOfRoundsPlayed++; }
+
+	void Reset()
+	{
+		AmountOfTieGames = 0;
+		AmountOfRoundsPlayed = 0;
+	}
+	int GetAmountOfTieGames() const { return AmountOfTieGames; }
+    int GetAmountOfRoundsPlayed() const { return AmountOfRoundsPlayed; }
+
 };
 
-enum WinnerStatus
-{
-	Player1,
-	Player2,
-	InProgress,
-	Tie
-};
-
+class TicTacToe;
 struct Player
 {
 	std::string name;
 	Symbol symbol;
 	int current_score;
 
-	Player(std::string name)
+	Player(std::string name, Symbol symbol)
 	{
 		this->name = name;
+		this->symbol = symbol;
 		current_score = 0;
 	}
 
@@ -36,28 +53,18 @@ struct Player
 		symbol = player.symbol;
 	}
 
-	//make this private , add this struct as friend
-	void WonTheGame()
+	int NextPositionToPlay(const TicTacToe& tictactoe)
 	{
-		current_score++;
-		std::cout << "Player " << name << " Won The Game." << std::endl;
-		std::cout << "Player Score " << current_score << "pts." <<std::endl;
+		int position = 0;
+		std::cout << name << " Turn: Enter position: ";
+		std::cin >> position;
+		return position;
 	}
+
 	bool operator ==(Player player)
 	{
 		return (name == player.name);
 	}
-
-};
-
-class Match
-{
-private:
-	int TotalGamesPlayed;
-	int TotalGamesPlayer1Won;
-	int TotalGamesPlayer2Won;
-public:
-	Match() : TotalGamesPlayed(0), TotalGamesPlayer1Won(0), TotalGamesPlayer2Won(0) {}
 };
 
 class TicTacToe
@@ -76,34 +83,32 @@ private:
 	bool CheckDiagonalLeft();
 	bool CheckDiagonalRight();
 
-	bool IsGameTie();
-	bool IsGameCompletedAndThereIsAWinner();
 	bool IsWinner();
-	void GameEnd();
-	void GameTie();
+	void GameCompleted();
 
 	void AnalyseGameStateAfterPlay();
 
 	void TryToPlayAtPosition(int position);
 	void SwitchCurrentPlayer();
+	void UpdateMatchInformation();
+	void CleanBoard();
 
-	
 	std::shared_ptr<Player> FindPlayerBySymbol(Symbol s);
 	WinnerStatus FindWinnerByPosition(int f, int c);
 
-	//Classes that represent exceptions
-	class OccupiedPosition {};
-	class OutsideOfBoardPosition{};
+ 
+	class OccupiedPosition : public std::exception {};
+	class OutsideOfBoardPosition : public std::exception {};
 
 public:
-
 	TicTacToe(const Player& player1, const Player& player2);
-
 	WinnerStatus CheckForWinner();
+
 	void ChoosePosition(int position);
-	void ResetMatch();
 	void ResetGame();
 	void DisplayScore();
 	void DisplayBoard();
-
+	const Player& GetCurrentPlayer() const;
 };
+
+

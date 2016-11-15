@@ -11,6 +11,15 @@ void TicTacToe::SwitchCurrentPlayer()
 	else currentPlayer = player1;
 }
 
+void TicTacToe::UpdateMatchInformation()
+{
+	match.IncrementRoundsPlayed();
+	if (gameState == Tie)
+		match.IncrementTieGames();
+	else
+		currentPlayer->current_score++;
+}
+
 std::shared_ptr<Player> TicTacToe::FindPlayerBySymbol(Symbol s)
 {
 	if (s == Symbol::Empty) throw;
@@ -25,10 +34,7 @@ TicTacToe::TicTacToe(const Player& p1, const Player& p2)
 	currentPlayer = player1;
 	gameState = WinnerStatus::InProgress;
 	numberOfPlays = 0;
-
-	for (size_t i = 0; i < 3; i++)
-		for (size_t j = 0; j < 3; j++)
-			board[i][j] = Symbol::Empty;
+	CleanBoard();
 }
 
 WinnerStatus TicTacToe::FindWinnerByPosition(int f,int c)
@@ -53,15 +59,39 @@ WinnerStatus TicTacToe::CheckForWinner()
 
 void TicTacToe::ChoosePosition(int position)
 {
-	//check exeption
-	TryToPlayAtPosition(position);
+	try 
+	{
+		TryToPlayAtPosition(position);
+	}
+	catch (OccupiedPosition e)
+	{
+		throw e;
+	}
 	AnalyseGameStateAfterPlay();
+}
+
+
+
+void TicTacToe::ResetGame()
+{
+	CleanBoard();
+}
+
+void TicTacToe::CleanBoard()
+{
+	numberOfPlays = 0;
+	for (size_t i = 0; i < 3; i++)
+		for (size_t j = 0; j < 3; j++)
+			board[i][j] = Symbol::Empty;
 }
 
 void TicTacToe::AnalyseGameStateAfterPlay()
 {
-	if (IsGameTie()) return;
-	if (IsGameCompletedAndThereIsAWinner()) return;
+	if (gameState != InProgress)
+	{
+		GameCompleted();
+		return;
+	}
 	SwitchCurrentPlayer();
 }
 void TicTacToe::TryToPlayAtPosition(int position)
@@ -75,48 +105,49 @@ void TicTacToe::TryToPlayAtPosition(int position)
 	gameState = CheckForWinner();
 }
 
-bool TicTacToe::IsGameTie()
-{
-	if (gameState == WinnerStatus::Tie) 
-	{
-		GameTie();
-		return true;
-	}
-	return false;
-}
-
-bool TicTacToe::IsGameCompletedAndThereIsAWinner()
-{
-	if (gameState == WinnerStatus::Player1 || gameState == Player2)
-	{
-		currentPlayer->WonTheGame();
-		return true;
-	}
-	return false;
-}
-
 bool TicTacToe::IsWinner()
 {
 	return (gameState == WinnerStatus::Player1 || gameState == WinnerStatus::Player2);
 }
 
+void TicTacToe::DisplayScore()
+{
+	std::cout << std::endl;
+
+	std::cout << "Player 1 Wins		Player 2 Winds		Tie Games		TotalNumberOfGames" << std::endl;
+	std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+	std::cout << player1->current_score << "\t\t\t" << player2->current_score << "\t\t\t" << match.GetAmountOfTieGames() << "\t\t\t" << match.GetAmountOfRoundsPlayed() << std::endl;
+	
+	std::cout << std::endl;
+}
+
 void TicTacToe::DisplayBoard()
 {
-	std::string board_string[3] = { "X" , "O" ,"E" };
+	std::string board_string[3] = { "X" , "O" ,"?" };
+	std::cout << std::endl;
+	std::cout << "Current State of the Game" << std::endl;
 	for (size_t i = 0; i < 3; i++)
 	{
 		for (size_t j = 0; j < 3; j++)
 			std::cout << board_string[board[i][j]] << " ";
 		std::cout << std::endl;
-	}
+	}	
+	std::cout << std::endl;
 }
 
-void TicTacToe::GameEnd()
+const Player & TicTacToe::GetCurrentPlayer()const
 {
-	currentPlayer->WonTheGame();
+	return *currentPlayer.get();
+}
 
-}
-void TicTacToe::GameTie()
+void TicTacToe::GameCompleted()
 {
-	std::cout << "TIE :)" << std::endl;
+	std::cout << std::endl;
+	if (gameState == Tie)
+		std::cout << "IMPORTANT: TIE" << std::endl;
+	else
+		std::cout << "IMPORTANT: Player " << currentPlayer->name << " Won the game." << std::endl;
+	DisplayBoard();
+	UpdateMatchInformation();
 }
+ 
