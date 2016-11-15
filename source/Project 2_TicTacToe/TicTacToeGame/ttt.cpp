@@ -55,20 +55,15 @@ void TicTacToe::ChoosePosition(int position)
 {
 	//check exeption
 	TryToPlayAtPosition(position);
-	gameState = CheckForWinner();
-	if (IsGameTie())
-	{
-		GameTie();
-		return;
-	}
-	if (!IsGameStillInProgress())
-	{
-		GameEnd();
-		return;
-	}
-	SwitchCurrentPlayer();
+	AnalyseGameStateAfterPlay();
 }
 
+void TicTacToe::AnalyseGameStateAfterPlay()
+{
+	if (IsGameTie()) return;
+	if (IsGameCompletedAndThereIsAWinner()) return;
+	SwitchCurrentPlayer();
+}
 void TicTacToe::TryToPlayAtPosition(int position)
 {
 	if (position < 0 || position > 9) throw OutsideOfBoardPosition();
@@ -77,19 +72,30 @@ void TicTacToe::TryToPlayAtPosition(int position)
 	if (board[f][c] != Symbol::Empty) throw OccupiedPosition();
 	board[f][c] = currentPlayer->symbol;
 	numberOfPlays++;
+	gameState = CheckForWinner();
 }
 
 bool TicTacToe::IsGameTie()
 {
-	return gameState == WinnerStatus::Tie;
+	if (gameState == WinnerStatus::Tie) 
+	{
+		GameTie();
+		return true;
+	}
+	return false;
 }
 
-bool TicTacToe::IsGameStillInProgress()
+bool TicTacToe::IsGameCompletedAndThereIsAWinner()
 {
-	return gameState == WinnerStatus::InProgress;
+	if (gameState == WinnerStatus::Player1 || gameState == Player2)
+	{
+		currentPlayer->WonTheGame();
+		return true;
+	}
+	return false;
 }
 
-bool TicTacToe::Winner()
+bool TicTacToe::IsWinner()
 {
 	return (gameState == WinnerStatus::Player1 || gameState == WinnerStatus::Player2);
 }

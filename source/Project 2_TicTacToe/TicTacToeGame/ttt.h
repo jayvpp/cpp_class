@@ -43,10 +43,11 @@ struct Player
 		std::cout << "Player " << name << " Won The Game." << std::endl;
 		std::cout << "Player Score " << current_score << "pts." <<std::endl;
 	}
-	bool operator==(Player player)
+	bool operator ==(Player player)
 	{
 		return (name == player.name);
 	}
+
 };
 
 class Match
@@ -55,8 +56,8 @@ private:
 	int TotalGamesPlayed;
 	int TotalGamesPlayer1Won;
 	int TotalGamesPlayer2Won;
+public:
 	Match() : TotalGamesPlayed(0), TotalGamesPlayer1Won(0), TotalGamesPlayer2Won(0) {}
-
 };
 
 class TicTacToe
@@ -65,23 +66,32 @@ private:
 	std::shared_ptr<Player> player1;
 	std::shared_ptr<Player> player2;
 	std::shared_ptr<Player> currentPlayer;
-	int numberOfPlays;
-	
-	Match Match;
-
-	WinnerStatus gameState;
 	Symbol board[3][3];
+	Match match;
+	WinnerStatus gameState;
+	int numberOfPlays;
+
 	bool CheckRow(int row);
 	bool CheckCol(int col);
 	bool CheckDiagonalLeft();
 	bool CheckDiagonalRight();
-	void SwitchCurrentPlayer();
+
 	bool IsGameTie();
-	bool IsGameStillInProgress();
+	bool IsGameCompletedAndThereIsAWinner();
+	bool IsWinner();
+	void GameEnd();
+	void GameTie();
+
+	void AnalyseGameStateAfterPlay();
+
 	void TryToPlayAtPosition(int position);
-	bool TicTacToe::Winner();
+	void SwitchCurrentPlayer();
+
+	
 	std::shared_ptr<Player> FindPlayerBySymbol(Symbol s);
 	WinnerStatus FindWinnerByPosition(int f, int c);
+
+	//Classes that represent exceptions
 	class OccupiedPosition {};
 	class OutsideOfBoardPosition{};
 
@@ -95,6 +105,5 @@ public:
 	void ResetGame();
 	void DisplayScore();
 	void DisplayBoard();
-	void GameEnd();
-	void GameTie();
+
 };
