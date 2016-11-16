@@ -9,5 +9,4 @@ void main()
 
 	GameManager gm;
 	gm.Run();
-
 }

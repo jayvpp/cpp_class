@@ -5,11 +5,7 @@
 #include <vector>
 
 enum Symbol { X, O, Empty };
-enum WinnerStatus { Player1, Player2, InProgress, Tie };
-
-
-
-
+enum GameStatus { Player1, Player2, InProgress, Tie };
 
 class Match
 {
@@ -75,7 +71,7 @@ private:
 	std::shared_ptr<Player> currentPlayer;
 	Symbol board[3][3];
 	Match match;
-	WinnerStatus gameState;
+	GameStatus gameState;
 	int numberOfPlays;
 
 	bool CheckRow(int row);
@@ -94,7 +90,7 @@ private:
 	void CleanBoard();
 
 	std::shared_ptr<Player> FindPlayerBySymbol(Symbol s);
-	WinnerStatus FindWinnerByPosition(int f, int c);
+	GameStatus FindWinnerByPosition(int f, int c);
 
  
 	class OccupiedPosition : public std::exception {};
@@ -102,7 +98,7 @@ private:
 
 public:
 	TicTacToe(const Player& player1, const Player& player2);
-	WinnerStatus CheckForWinner();
+	GameStatus CheckForWinner();
 
 	void ChoosePosition(int position);
 	void ResetGame();

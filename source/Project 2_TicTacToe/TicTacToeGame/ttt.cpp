@@ -32,19 +32,19 @@ TicTacToe::TicTacToe(const Player& p1, const Player& p2)
 	player1 = std::make_shared<Player>(p1);
 	player2 = std::make_shared<Player>(p2);
 	currentPlayer = player1;
-	gameState = WinnerStatus::InProgress;
+	gameState = GameStatus::InProgress;
 	numberOfPlays = 0;
 	CleanBoard();
 }
 
-WinnerStatus TicTacToe::FindWinnerByPosition(int f,int c)
+GameStatus TicTacToe::FindWinnerByPosition(int f,int c)
 {
 	std::shared_ptr<Player> player = FindPlayerBySymbol(board[f][c]);
 	if (player == player1) return Player1;
 	else return Player2;
 }
 
-WinnerStatus TicTacToe::CheckForWinner()
+GameStatus TicTacToe::CheckForWinner()
 {
 	for (size_t i = 0; i < 3; i++)
 	{
@@ -53,8 +53,8 @@ WinnerStatus TicTacToe::CheckForWinner()
 		if (CheckDiagonalLeft())  return FindWinnerByPosition(0, 0);
 		if (CheckDiagonalRight()) return FindWinnerByPosition(0, 2);
 	}
-	if (numberOfPlays == 9)       return WinnerStatus::Tie;
-	return WinnerStatus::InProgress;
+	if (numberOfPlays == 9)       return GameStatus::Tie;
+	return GameStatus::InProgress;
 }
 
 void TicTacToe::ChoosePosition(int position)
@@ -107,7 +107,7 @@ void TicTacToe::TryToPlayAtPosition(int position)
 
 bool TicTacToe::IsWinner()
 {
-	return (gameState == WinnerStatus::Player1 || gameState == WinnerStatus::Player2);
+	return (gameState == GameStatus::Player1 || gameState == GameStatus::Player2);
 }
 
 void TicTacToe::DisplayScore()
@@ -129,8 +129,10 @@ void TicTacToe::DisplayBoard()
 	for (size_t i = 0; i < 3; i++)
 	{
 		for (size_t j = 0; j < 3; j++)
-			std::cout << board_string[board[i][j]] << " ";
-		std::cout << std::endl;
+		{
+			std::cout <<"|" <<board_string[board[i][j]];
+		}
+		std::cout << "|\n-------" << std::endl;
 	}	
 	std::cout << std::endl;
 }
@@ -142,7 +144,7 @@ const Player & TicTacToe::GetCurrentPlayer()const
 
 void TicTacToe::GameCompleted()
 {
-	std::cout << std::endl;
+	std::cout <<"-------------------------------------------------------------------------------------------" << std::endl;
 	if (gameState == Tie)
 		std::cout << "IMPORTANT: TIE" << std::endl;
 	else
