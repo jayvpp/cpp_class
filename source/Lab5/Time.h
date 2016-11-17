@@ -1,7 +1,8 @@
 //File Name: Time.h
 //Practicing with classes.
 #pragma once
-
+#include <iomanip>
+#include <string>
 #ifndef TIME_H
 #define TIME_H
 
@@ -27,8 +28,13 @@ public:
 	void SetHour(int);
 	void SetMinute(int);
 
-	int GetHour();
-	int GetMinute();
-	void PrintTime();
+	int GetHour() const;
+	int GetMinute() const;
+	std::string to_standard_time() ;
+	std::string to_night_or_day() ;
+	virtual void PrintTime();
+ 
+	
+
 };
 #endif

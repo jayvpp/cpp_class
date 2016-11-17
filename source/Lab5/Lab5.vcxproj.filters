@@ -39,10 +39,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DetailedTime.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

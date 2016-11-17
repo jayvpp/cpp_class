@@ -13,15 +13,12 @@ private:
 
 public:
 	DetailedTime();
-  
 	DetailedTime(int hr, int min, int secs);
   
 	void SetSecond(int seconds);
-  
-	int GetSecond();
-
 	int SetTime(int hr, int min);
-
+  
+	int GetSecond()const;
 	void PrintTime();
 };
 #endif

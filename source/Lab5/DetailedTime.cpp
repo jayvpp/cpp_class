@@ -19,24 +19,13 @@ using namespace std;
 		seconds = sec;
 	}
 
-	int DetailedTime::GetSecond()
+	int DetailedTime::GetSecond() const
 	{
 		return seconds;
 	}
 
 	void DetailedTime::PrintTime()
 	{
-		Time::PrintTime();
-
-		cout << ":" << seconds;
-
-		if (Time::GetHour() < 12)
-			cout << "AM" << endl;
-
-		else
-			cout << "PM" << endl;
+		std::cout << to_standard_time() << ":" << seconds << to_night_or_day() << endl;
 	}
 
-	int SetTime(int hr, int min);
-
-	void PrintTime();
