@@ -2,6 +2,9 @@
 //Practicing with classes.
 #pragma once
 
+#ifndef TIME_H
+#define TIME_H
+
 class Time
 {
 private:
@@ -28,4 +31,4 @@ public:
 	int GetMinute();
 	void PrintTime();
 };
-
+#endif

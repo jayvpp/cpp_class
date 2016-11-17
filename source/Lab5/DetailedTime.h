@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef DETAILEDTIME_H
+#define DETAILEDTIME_H
+
 #include "Time.h"
 
 
@@ -21,4 +24,4 @@ public:
 
 	void PrintTime();
 };
-
+#endif
