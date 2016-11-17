@@ -1,0 +1,11 @@
+﻿  stdafx.cpp
+  Time.cpp
+  DetailedTimeMain.cpp
+  DetailedTime.cpp
+  Generating Code...
+DetailedTimeMain.obj : error LNK2005: "public: __thiscall DetailedTime::DetailedTime(int,int,int)" (??0DetailedTime@@QAE@HHH@Z) already defined in DetailedTime.obj
+DetailedTimeMain.obj : error LNK2005: "public: __thiscall DetailedTime::DetailedTime(void)" (??0DetailedTime@@QAE@XZ) already defined in DetailedTime.obj
+DetailedTimeMain.obj : error LNK2005: "public: int __thiscall DetailedTime::GetSecond(void)" (?GetSecond@DetailedTime@@QAEHXZ) already defined in DetailedTime.obj
+DetailedTimeMain.obj : error LNK2005: "public: void __thiscall DetailedTime::PrintTime(void)" (?PrintTime@DetailedTime@@QAEXXZ) already defined in DetailedTime.obj
+DetailedTimeMain.obj : error LNK2005: "public: void __thiscall DetailedTime::SetSecond(int)" (?SetSecond@DetailedTime@@QAEXH@Z) already defined in DetailedTime.obj
+C:\Users\eyep.DCSW\Google Drive\2016School\COP2335C\cpp_class\cpp_class\source\Lab5\Debug\Lab5.exe : fatal error LNK1169: one or more multiply defined symbols found
