@@ -10,20 +10,19 @@ int main()
 	time.SetHour(17);
 	time.SetMinute(45);
 
-
-    DetailedTime time2(22, 45, 30);
+    DetailedTime time2;
+	time2.SetHour(16);
+	time2.SetMinute(45);
+	time2.SetSecond(30);
 
 	cout << "The time here is: ";
-
-
-
 	time.PrintTime();
-
+	cout << "Hour: " << time.GetHour() - 12 << " Minutes: " << time.GetMinute() << endl;
 	cout << endl;
-	cout << "The time in london is: ";
 
+	cout << "The time in Peru is: ";
 	time2.PrintTime();
+	cout << "Hour: " << time2.GetHour() - 12 << " Minutes: " << time2.GetMinute() << " Seconds: " << time2.GetSecond() << endl;
 
-
-	return 0;
+	system("pause");
 }
