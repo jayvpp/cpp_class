@@ -16,7 +16,7 @@ public:
 	DetailedTime(int hr, int min, int secs);
   
 	void SetSecond(int seconds);
-	int SetTime(int hr, int min);
+	void SetTime(int hr, int min, int secs);
   
 	int GetSecond()const;
 	void PrintTime();
