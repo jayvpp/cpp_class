@@ -9,7 +9,7 @@ using namespace std;
 		seconds = 0;
 	}
 
-	DetailedTime::DetailedTime(int hr, int min, int secs) :Time(hr, min)
+	DetailedTime::DetailedTime(int hr, int min, int secs) : Time(hr, min)
 	{
 		seconds = secs;
 	}
@@ -17,6 +17,12 @@ using namespace std;
 	void DetailedTime::SetSecond(int sec)
 	{
 		seconds = sec;
+	}
+
+	void DetailedTime::SetTime(int hr, int min, int secs)
+	{
+		Time::SetTime(hr, min);
+		seconds = secs;
 	}
 
 	int DetailedTime::GetSecond() const
