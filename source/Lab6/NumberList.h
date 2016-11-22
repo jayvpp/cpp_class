@@ -34,6 +34,7 @@ public:
    // Linked list operations
    void appendNode(double);
    void insertNode(double);
+   void insertByPosition(double, int);
    void deleteNode(double);
    void displayList() const;
    int searchNode(double);
@@ -44,10 +45,11 @@ public:
 };
 //copy constructor
 NumberList::NumberList(const NumberList &obj)
-   { cout<<"In the copy constructor...\n";
+{ 
+	cout<<"In the copy constructor...\n";
 	ListNode *objPtr;
 	
-  //check if null
+	//check if null
 	if (obj.head == 0)
 	{	
 		head = 0;
@@ -72,35 +74,35 @@ NumberList::NumberList(const NumberList &obj)
 		//move ptr along
 		objPtr=objPtr->next;
 	}
-   }
+}
 
 
 void NumberList::appendNode(double num)
 {	
-   ListNode *newNode;  // To point to a new node
-   ListNode *nodePtr;  // To move through the list
+	ListNode *newNode;  // To point to a new node
+	ListNode *nodePtr;  // To move through the list
 
-   // Allocate a new node and store num there.
-   newNode = new ListNode;
-   newNode->value = num;
-   newNode->next = 0;
+	// Allocate a new node and store num there.
+	newNode = new ListNode;
+	newNode->value = num;
+	newNode->next = 0;
 
-   // If there are no nodes in the list
-   // make newNode the first node.
-   if (!head)
-      head = newNode;
-   else  // Otherwise, insert newNode at end.
-   {
-      // Initialize nodePtr to head of list.
+	// If there are no nodes in the list
+	// make newNode the first node.
+	if (!head)
+		head = newNode;
+	else  // Otherwise, insert newNode at end.
+	{
+		// Initialize nodePtr to head of list.
      
-     nodePtr = head;
-      // Find the last node in the list.
-      while (nodePtr->next!=0)
-	  	nodePtr = nodePtr->next;
+		nodePtr = head;
+		// Find the last node in the list.
+		while (nodePtr->next!=0)
+		nodePtr = nodePtr->next;
 
-      // Insert newNode as the last node.
-      nodePtr->next = newNode;
-   }
+		// Insert newNode as the last node.
+		nodePtr->next = newNode;
+	}
 }
 
 //**************************************************
@@ -111,22 +113,22 @@ void NumberList::appendNode(double num)
 
 void NumberList::displayList() const
 {
-   ListNode *nodePtr;  // To move through the list
+	ListNode *nodePtr;  // To move through the list
 
-   // Position nodePtr at the head of the list.
-   nodePtr = head;
+	// Position nodePtr at the head of the list.
+	nodePtr = head;
 
-   // While nodePtr points to a node, traverse
-   // the list.
-   while (nodePtr!=0)
-   {
-      // Display the value in this node.
-     cout<<nodePtr->value<<endl;
+	// While nodePtr points to a node, traverse
+	// the list.
+	while (nodePtr!=0)
+	{
+		// Display the value in this node.
+		cout<<nodePtr->value<<endl;
 
-      // Move to the next node.
-     nodePtr = nodePtr->next;
+		// Move to the next node.
+		nodePtr = nodePtr->next;
     
-   }
+	}
 }
 
 //**************************************************
@@ -179,6 +181,21 @@ void NumberList::insertNode(double num)
 	newNode->next = nodePtr;
       }
    }
+}
+
+//**************************************************
+// The insertByPosition function inserts x at a    *
+// specified position, pos. A position of O means  *
+// that the value will become the first item in    *
+// the list, 1 means the second item, and so on.   *
+// A position equal to or greater than the length  *
+// of the list means that the value is placed at   *
+// the end of the list.							   *
+//**************************************************
+
+void NumberList::insertByPosition(double x, int y)
+{
+
 }
 
 //**************************************************
