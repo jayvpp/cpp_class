@@ -1,0 +1,60 @@
+﻿  stdafx.cpp
+  Project3.cpp
+  HourlyPay.cpp
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\hourlypay.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  EmployeePay.cpp
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeepay.cpp(28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  EmployeeMain.cpp
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\hourlypay.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(36): error C2593: 'operator >>' is ambiguous
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(484): note: could be 'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::basic_streambuf<char,std::char_traits<char>> *)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(465): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(void *&)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(447): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(long double &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(429): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(double &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(410): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(float &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(391): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(unsigned __int64 &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(372): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(__int64 &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(352): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(unsigned long &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(334): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(long &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(316): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(unsigned int &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(290): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(int &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(271): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(unsigned short &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(236): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(short &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(217): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(bool &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(210): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::ios_base &(__cdecl *)(std::ios_base &))'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(203): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::basic_ios<char,std::char_traits<char>> &(__cdecl *)(std::basic_ios<char,std::char_traits<char>> &))'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(197): note: or       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::basic_istream<char,std::char_traits<char>> &(__cdecl *)(std::basic_istream<char,std::char_traits<char>> &))'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(1106): note: or       'std::basic_istream<char,std::char_traits<char>> &std::operator >><char,std::char_traits<char>,const int>(std::basic_istream<char,std::char_traits<char>> &&,_Ty &)'
+          with
+          [
+              _Ty=const int
+          ]
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(1096): note: or       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,unsigned char &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(1089): note: or       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,unsigned char *)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(1082): note: or       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,signed char &)'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\istream(1075): note: or       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,signed char *)'
+  c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(36): note: while trying to match the argument list '(std::istream, const int)'
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(46): error C2466: cannot allocate an array of constant size 0
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(46): error C2133: 'employees': unknown size
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(46): error C2512: 'HourlyPay': no appropriate default constructor available
+  c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\hourlypay.h(12): note: see declaration of 'HourlyPay'
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(104): warning C4566: character represented by universal-character-name '\u2554' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(104): warning C4566: character represented by universal-character-name '\u2550' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(104): warning C4566: character represented by universal-character-name '\u2557' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(105): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(106): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(107): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(108): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(109): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(110): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(111): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(112): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(113): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(114): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(115): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(116): warning C4566: character represented by universal-character-name '\u255A' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(116): warning C4566: character represented by universal-character-name '\u2550' cannot be represented in the current code page (1252)
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employeemain.cpp(116): warning C4566: character represented by universal-character-name '\u255D' cannot be represented in the current code page (1252)
+  Employee.cpp
+c:\users\eyep.dcsw\google drive\2016school\cop2335c\cpp_class\cpp_class\source\project3\project3\employee.cpp(16): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
