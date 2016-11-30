@@ -42,7 +42,6 @@ bool Employee::SetName(string nm)
 	{
 		//capitalize first letter of first name 
 		nm[0] = (toupper(nm[0]));
-		//cout<<"Input accepted."<<endl<<endl;
 	}
 
 	name = nm;
@@ -99,7 +98,6 @@ bool Employee::SetEmployeeId(string eId)
 	if (valid)
 	{
 		//cout << "Input accepted." << endl << endl;
-		
 	}
 
 	employeeId = eId;
@@ -159,7 +157,6 @@ bool Employee::SetHireDate(string hD)
 			// Cannot go over 31 days
 			if (hD[3] == '3' && hD[4]>'1')
 			{
-				//if(hD[4]>'1')
 				valid = false;
 			}
 
@@ -191,10 +188,6 @@ bool Employee::SetHireDate(string hD)
 	{
 		cout << "Invalid input try again." << endl << endl;
 	}
-
-	//confirmation of valid input turns lowercase letters to upper automatically
-	//if(valid)
-	//{cout<<"Input accepted."<<endl<<endl;}
 
 	hireDate = hD;
 	return valid;
@@ -249,10 +242,6 @@ bool Employee::SetSocial(string ssn)
 	{
 		cout << "Invalid entry try again." << endl << endl;
 	}
-
-	//confirmation of valid input
-	//if(valid)
-	//{cout<<"Input Accepted."<<endl<<endl;}
 
 	social = ssn;
 	return valid;
