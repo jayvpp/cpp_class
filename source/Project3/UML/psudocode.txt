@@ -1,0 +1,162 @@
+ 
+
+ SetName(name:str)->boolean
+{
+	boolean valid = true;
+	integer i = 0;
+	while i < Length(name)
+	{
+		// invalidate characters but letters and spaces
+		if not(isalpha(nm[i])) and nm[i] notequal ' '
+		{
+			valid = false
+			break loop
+		}
+
+		// Capitalize first letter of last and middle names
+		if nm[i] equal ' '
+			nm[i + 1] = (toupper(nm[i + 1]))
+
+		increment(i)
+	}
+
+	//if input is not valid
+	if (not valid)
+		display "Invalid input try again." 
+
+	//turns lowercase letters to upper automatically
+	if (valid)
+	{
+		//capitalize first letter of first name 
+		nm[0] = (CAPITALIZE(nm[0]));
+	}
+
+	name = nm;
+	RETURN valid;
+}
+SetEmployeeId(s:str)->boolean
+{
+	boolean valid = true;
+
+	//checks Employee id for format
+	FOREACH i in (0 to 4)
+	{
+		//convert lowercase entries to upper 
+		eId[4] = (CAPITALIZE(eId[4]));
+
+		//checks length
+		if Length(eId) -th 5 -AND  Length(eID) -lt 5)
+		{
+			valid = false;
+			break Loop;
+		}
+
+		// make sure characters 0-2 are digits
+		if (i -lt 3 -AND !isdigit(eId[i]) )
+			valid = false;
+
+		//checks for '-'
+		if (eId[3] -NotEqual '-' -OR eId[4]<65 -OR eId[4]>77)
+			valid = false;
+	}
+
+	if (!valid)
+		display "Invalid input try again." 
+		
+	if (valid)
+		display << "Input accepted." 
+		
+	employeeId = eId;
+	return valid;
+}
+SetHireDate(string:hireDate)->boolean
+{
+	//Loop while the CheckDateValidator returns false, return false means it is not a valid date.
+	while CheckDateValidator (hireDate) -EQUAL False
+	Hd = str;
+}
+SetSocial(string:social)->boolean
+{
+		boolean valid = true;
+	//Loop while the CheckDateValidator returns false, return false means it is not a valid date.
+	while CheckSocialSecurityValidator (social) -EQUAL False
+	sc = social;
+}
+
+SetAnnualPay(integer aPay)
+{
+	if aPay -less than 0 display "False imput, anual pay should be greater than 0"
+	else
+	anualPay = aPay
+}
+SetWeeklyPay()
+{
+	weeklyPay = anualPay / 52
+}
+
+HourlyPay::SetWorked(float workd)->boolean
+{
+	bool valid = true;
+
+	if (workd -greater 60 || workd -less 0)
+	{
+		valid = false;
+		display "Invalid input.";
+	}
+
+	worked = workd;
+	return valid;
+}
+
+ 
+HourlyPay::SetHourlyRate()
+{
+	float hR = 0.0;
+	hR = GetWeeklyPay() / 40;
+	hourlyRate = hR;
+}
+
+HourlyPay::SetOvertimeRate()
+{
+	float otR = 0.0;
+	otR = hourlyRate * 1.5;
+	overtimeRate = otR;
+}
+
+PrintEmployee()
+{
+	display "\t\t EMPLOYEE INFORMATION\n\n";
+	display "Name:  name;
+	display "Social: social;
+	display "Employee ID: employeeId;
+	display "Hire Date:  hireDate;
+	display "Annual Pay: annualPay;
+	display "Weekly Pay: weeklyPay;
+}
+
+HourlyPay::PrintEmployee()
+{
+	Display "\t\t EMPLOYEE INFORMATION\n\n";
+	Display "Name:  "<< name <<  
+	Display "Social:  "<< social  
+	Display "Employee ID:  "<< employeeId 
+    Display "Hire Date:  " << hireDate  
+	Display "Annual Pay: $" << annualPay  
+	Display "Weekly Rate: $" << weeklyPay  
+	Display "Hourly Rate: $" << hourlyRate 
+	Display "Overtime Rate: $" << overtimeRate  
+    Display "Hours Worked: " << worked  
+
+	if (worked -less 40)
+	{
+		Display "Weekly Pay: $" << worked*hourlyRate  
+		Display "Total Pay: $" << worked*hourlyRate 
+	}
+	else if(worked -greater 40)
+	{
+		Display << "Overtime Hours: " << (worked-40) 
+		Display << "Weekly Pay: $" << hourlyRate*40  
+		Display << "Overtime Pay: $" << (worked-40)*overtimeRate  
+		Display << "Total Pay: $" << (hourlyRate*40)+((worked-40)*overtimeRate
+	}
+}
