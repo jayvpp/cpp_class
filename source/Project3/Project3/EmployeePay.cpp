@@ -29,11 +29,11 @@ void EmployeePay::SetWeeklyPay()
 }
 
 //Accessors
-int EmployeePay::GetAnnualPay()
+int EmployeePay::GetAnnualPay()const
 {
 	return annualPay;
 }
-float EmployeePay::GetWeeklyPay()
+float EmployeePay::GetWeeklyPay()const
 {
 	return weeklyPay;
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include "ttt.h"
+#include <memory>
+
+
  
 class GameManager
 {

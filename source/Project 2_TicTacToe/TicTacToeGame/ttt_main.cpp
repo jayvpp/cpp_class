@@ -7,6 +7,8 @@ void main()
 {
 	std::cout << "Tic Tac Toe Game" << std::endl;
 
-	GameManager gm;
-	gm.Run();
+	IAPlayer player("computer", X);
+
+	/*GameManager gm;
+	gm.Run();*/
 }

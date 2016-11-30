@@ -1,0 +1,27 @@
+﻿  EmployeeMain.cpp
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(116): warning C4566: character represented by universal-character-name '\u2554' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(116): warning C4566: character represented by universal-character-name '\u2550' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(116): warning C4566: character represented by universal-character-name '\u2557' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(117): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(118): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(119): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(120): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(121): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(122): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(123): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(124): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(125): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(126): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(127): warning C4566: character represented by universal-character-name '\u2551' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(128): warning C4566: character represented by universal-character-name '\u255A' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(128): warning C4566: character represented by universal-character-name '\u2550' cannot be represented in the current code page (1252)
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeemain.cpp(128): warning C4566: character represented by universal-character-name '\u255D' cannot be represented in the current code page (1252)
+  Generating Code...
+  Compiling...
+  HourlyPay.cpp
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\hourlypay.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  EmployeePay.cpp
+c:\users\jason\desktop\school\cpp_class\source\project3\project3\employeepay.cpp(28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Project3.vcxproj -> C:\Users\jason\Desktop\school\cpp_class\source\Project3\x64\Debug\Project3.exe
+  Project3.vcxproj -> C:\Users\jason\Desktop\school\cpp_class\source\Project3\x64\Debug\Project3.pdb (Full PDB)

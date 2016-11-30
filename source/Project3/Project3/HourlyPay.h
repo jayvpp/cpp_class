@@ -23,7 +23,8 @@ public:
 		overtimeRate = otR;
 		worked = wrkd;
 	}
-
+	HourlyPay(){}
+	~HourlyPay() {}
 	//Mutators
 	void SetHourlyRate();
 	void SetOvertimeRate();
@@ -31,9 +32,9 @@ public:
 
 
 	//Accessors
-	float GetHourlyRate();
-	float GetOvertimeRate();
-	float GetWorked();
+	float GetHourlyRate()const;
+	float GetOvertimeRate()const;
+	float GetWorked()const;
 
 	// Display Function
 	void PrintEmployee();

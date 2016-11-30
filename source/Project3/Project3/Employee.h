@@ -25,6 +25,8 @@ public:
 		hireDate = hD;
 		social = ssn;
 	}
+	Employee(){}
+	~Employee(){}
 
 	// Mutators
 	bool SetName(string);
@@ -33,10 +35,10 @@ public:
 	bool SetSocial(string);
 
 	// Accessors
-	string GetName();
-	string GetEmployeeId();
-	string GetHireDate();
-	string GetSocial();
+	string GetName() const;
+	string GetEmployeeId() const;
+	string GetHireDate() const;
+	string GetSocial() const;
 
 	// other
 	//void PrintEmployee();

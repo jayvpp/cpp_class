@@ -11,11 +11,11 @@
 // Project 3 
 
 #include "stdafx.h"
-#include"HourlyPay.cpp"
+#include"HourlyPay.h"
 #include<iostream>
 #include<iomanip>
 #include<cctype>
-
+#include  <vector>
 using namespace std;
 
 //prototypes
@@ -23,7 +23,7 @@ using namespace std;
 //type: void
 //parameters: Hourlypay(employees) int(SIZE)
 //purpose: to fill employee array with data
-void GetData(HourlyPay[], int);
+void GetData(HourlyPay[],int);
 
 //type: void
 //parameters: Hourlypay(employees) int(SIZE)
@@ -34,8 +34,10 @@ int main()
 {
 	//variables
 	//array size
-	int SIZE = 0;
-
+	int SIZE = 100;
+	HourlyPay employees[1000];
+	
+ 
 	cout << "\t\t\tEMPLOYEE PAYMENT SYSTEM." << endl << endl;
 	cout << "Start." << endl << endl;
 
@@ -53,7 +55,7 @@ int main()
 	} while (SIZE <= 0);
 
 	// instance array of derived class HourlyPay
-	HourlyPay employees[SIZE];
+	
 
 	// used to populate array of employees
 	GetData(employees, SIZE);

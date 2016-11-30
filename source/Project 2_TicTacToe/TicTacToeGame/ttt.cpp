@@ -1,9 +1,6 @@
-#include "ttt.h"
-#include <iostream>
-bool TicTacToe::CheckRow(int row)    { return (board[row][0] != Empty && board[row][0] == board[row][1] && board[row][1] == board[row][2]); }
-bool TicTacToe::CheckCol(int col)    { return (board[0][col] != Empty && board[0][col] == board[1][col] && board[1][col] == board[2][col]); }
-bool TicTacToe::CheckDiagonalLeft()  { return (board[0][0]   != Empty && board[0][0]   == board[1][1]   && board[1][1]   == board[2][2]); }
-bool TicTacToe::CheckDiagonalRight() { return (board[0][2]   != Empty && board[0][2]   == board[1][1]   && board[1][1]   == board[2][0]); }
+#include "GameManager.h"
+#include "TicTacToeBoard.h"
+
 
 void TicTacToe::SwitchCurrentPlayer()
 {
@@ -77,13 +74,7 @@ void TicTacToe::ResetGame()
 	CleanBoard();
 }
 
-void TicTacToe::CleanBoard()
-{
-	numberOfPlays = 0;
-	for (size_t i = 0; i < 3; i++)
-		for (size_t j = 0; j < 3; j++)
-			board[i][j] = Symbol::Empty;
-}
+
 
 void TicTacToe::AnalyseGameStateAfterPlay()
 {
@@ -96,6 +87,8 @@ void TicTacToe::AnalyseGameStateAfterPlay()
 }
 void TicTacToe::TryToPlayAtPosition(int position)
 {
+
+
 	if (position < 0 || position > 9) throw OutsideOfBoardPosition();
 	int f = (position - 1) / 3;
 	int c = (position - 1) % 3;

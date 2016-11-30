@@ -156,7 +156,6 @@
     <ClCompile Include="EmployeeMain.cpp" />
     <ClCompile Include="EmployeePay.cpp" />
     <ClCompile Include="HourlyPay.cpp" />
-    <ClCompile Include="Project3.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

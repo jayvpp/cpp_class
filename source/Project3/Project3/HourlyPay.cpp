@@ -41,17 +41,17 @@ void HourlyPay::SetOvertimeRate()
 }
 
 // Accessors
-float HourlyPay::GetHourlyRate()
+float HourlyPay::GetHourlyRate()const
 {
 	return hourlyRate;
 }
 
-float HourlyPay::GetOvertimeRate()
+float HourlyPay::GetOvertimeRate()const
 {
 	return overtimeRate;
 }
 
-float HourlyPay::GetWorked()
+float HourlyPay::GetWorked()const
 {
 	return worked;
 }

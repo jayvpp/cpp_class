@@ -259,22 +259,22 @@ bool Employee::SetSocial(string ssn)
 }
 
 // Accessor
-string Employee::GetName()
+string Employee::GetName() const
 {
 	return name;
 }
 
-string Employee::GetEmployeeId()
+string Employee::GetEmployeeId() const
 {
 	return employeeId;
 }
 
-string Employee::GetHireDate()
+string Employee::GetHireDate() const
 {
 	return hireDate;
 }
 
-string Employee::GetSocial()
+string Employee::GetSocial()const
 {
 	return social;
 }

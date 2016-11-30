@@ -20,16 +20,20 @@ public:
 		annualPay = ap;
 		weeklyPay = wp;
 	}
+	EmployeePay(){}
+	~EmployeePay(){}
 
 	//Mutators
 	bool SetAnnualPay(int);
 	void SetWeeklyPay();
 
 	//Accessors
-	int GetAnnualPay();
-	float GetWeeklyPay();
+	int GetAnnualPay()const;
+	float GetWeeklyPay()const;
+
+	void PrintEmployee();
 
 	//other
-	void PrintEmployee();
+
 };
 #endif
