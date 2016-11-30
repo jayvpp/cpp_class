@@ -15,7 +15,6 @@
 #include<iostream>
 #include<iomanip>
 #include<cctype>
-#include  <vector>
 using namespace std;
 
 //prototypes
@@ -35,7 +34,7 @@ int main()
 	//variables
 	//array size
 	int SIZE = 100;
-	HourlyPay employees[1000];
+	HourlyPay employees[100];
 	
  
 	cout << "\t\t\tEMPLOYEE PAYMENT SYSTEM." << endl << endl;
