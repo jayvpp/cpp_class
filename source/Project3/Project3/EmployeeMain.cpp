@@ -36,7 +36,6 @@ int main()
 	int SIZE = 100;
 	HourlyPay employees[100];
 	
- 
 	cout << "\t\t\tEMPLOYEE PAYMENT SYSTEM." << endl << endl;
 	cout << "Start." << endl << endl;
 
@@ -149,8 +148,6 @@ void PrintCheck(HourlyPay employees[], int SIZE)
 	} while (choice != 'N');
 }
 
-
-//
 void GetData(HourlyPay employees[], int SIZE)
 {
 	//variables
@@ -222,5 +219,4 @@ void GetData(HourlyPay employees[], int SIZE)
 		// increment i
 		i++;
 	}
-
 }
