@@ -1,0 +1,5 @@
+﻿  Final Project.cpp
+c:\users\jason\desktop\school\cpp_class\source\final project\final project\final project\final project.cpp(135): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jason\desktop\school\cpp_class\source\final project\final project\final project\final project.cpp(136): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Final Project.vcxproj -> C:\Users\jason\Desktop\school\cpp_class\source\Final Project\Final Project\x64\Debug\Final Project.exe
+  Final Project.vcxproj -> C:\Users\jason\Desktop\school\cpp_class\source\Final Project\Final Project\x64\Debug\Final Project.pdb (Full PDB)
