@@ -1,12 +1,14 @@
 // Final Project.cpp : Defines the entry point for the console application.
 
 #include "stdafx.h"
+
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/core//core.hpp"
 #include "opencv2/opencv.hpp"
-#include  <vector>
+
 #include <fstream>
-#include  <iostream>
+#include  <memory>
+#include  <vector>
 
 using namespace cv;
 typedef unsigned char byte;
@@ -29,49 +31,60 @@ public:
 	}
 };
 
-
-
-class ImageHandle
+class ImageHandlerBase
 {
-class ImageDoesNotExistException {};
-private:
-	std::string path;
-
-public:
+protected:
 	Mat image;
-
-	ImageHandle(std::string path)
-	{
-		this->path = path;
-		image = imread(path);		 
-	}
-	ImageHandle(const Mat& image)
-	{
+public:
  
-		path = "";
-		this->image = image;
-	}
+	ImageHandlerBase(){}
+	ImageHandlerBase(Mat mat) { this->image = mat; }
 
 	int Width() const { return image.size().width; }
 	int Height() const { return image.size().height; }
+	
+	Mat Image() const {
+		return image;
+	}
 
-	PixelPacked GetPixelAtPosition(int row,int col)
+	PixelPacked GetPixelAtPosition(int row, int col)
 	{
 		PixelPacked pixel(image.at<Vec3b>(row, col)[0], image.at<Vec3b>(row, col)[1], image.at<Vec3b>(row, col)[2]);
 		return pixel;
 	}
 
-	ImageHandle CropImage(const Rect& rectangle) const
+	ImageHandlerBase CropImage(Rect rectangle) const
 	{
 		Mat croppedImg = image(rectangle);
-		return ImageHandle(croppedImg);
+		return ImageHandlerBase(croppedImg);
 	}
+};
+
+
+class InMemoryImageHandler : public ImageHandlerBase
+{
+public:
+	InMemoryImageHandler(Mat image)
+	{
+		this->image = image;
+	}
+	int Width() const { return image.size().width; }
+	int Height() const { return image.size().height; }
+};
+
+class FileImageHandler : public ImageHandlerBase
+{
+	class ImageDoesNotExistException {};
+private:
+	std::string path;
+public:
+	FileImageHandler(std::string path) : path(path) { image = imread(path); }
 };
 
 class ImageSaver
 {
 public:
-	static void save(std::string location, const Mat & image)
+	static void save(std::string location, Mat  image)
 	{
 		imwrite(location, image);
 	}
@@ -80,10 +93,10 @@ public:
 class ImageResize
 {
 public:
-	static void Resize(ImageHandle* image, int percent, std::string location)
+	static void Resize(InMemoryImageHandler* image, int percent, std::string location)
 	{
 		Mat outputMat;
-		resize(image->image, outputMat, Size(180, 150), 100, 100,CV_INTER_AREA);
+		resize(image->Image(), outputMat, Size(180, 150), 100, 100,CV_INTER_AREA);
 	}
 };
 
@@ -91,10 +104,10 @@ public:
 class ImageProcessor
 {
 private:
-	ImageHandle* targetImage;
-	ImageHandle* catalogImage;
+	ImageHandlerBase * targetImage;
+	ImageHandlerBase* catalogImage;
 public:
-	ImageProcessor(ImageHandle* targetImage, ImageHandle* catalogImage)
+	ImageProcessor(ImageHandlerBase* targetImage, ImageHandlerBase* catalogImage)
 	{
 		this->targetImage = targetImage;
 		this->catalogImage = catalogImage;
@@ -105,9 +118,9 @@ public:
 		double distance = 0;
 		if (!EqualSize()) return 99999999;
 
-		for (size_t h = 0; h < targetImage->Height(); h++)
+		for (int h = 0; h < targetImage->Height(); h++)
 		{
-			for (size_t w = 0; w < targetImage->Width(); w++)
+			for (int w = 0; w < targetImage->Width(); w++)
 			{			 
 				auto pixelTarget = targetImage->GetPixelAtPosition(h,w);
 				auto pixelcatalog = catalogImage->GetPixelAtPosition(h, w);
@@ -116,20 +129,24 @@ public:
 				distance += currentDistance;
 			}
 		}
-		return distance / targetImage->image.size().area();
+		return distance / targetImage->Image().size().area();
+			 
 	}
 private:
-	bool EqualSize() const { 
-		return targetImage->image.size().area() == catalogImage->image.size().area() && targetImage->Height() == catalogImage->Height(); }
+	bool EqualSize() const 
+	{ 
+		return targetImage->Image().size().area() == catalogImage->Image().size().area() && targetImage->Height() == catalogImage->Height(); 
+	}
 };
+
 
  
 class ImageCatalog
 {
 private:
-	int width = -1;
-	int height = -1;
-	std::vector<ImageHandle> catalog;
+	int width;
+	int height;
+	std::vector<ImageHandlerBase> catalog;
 public:
 	ImageCatalog(std::string catalogPath)
 	{
@@ -140,74 +157,114 @@ public:
 		if (myfile.is_open())
 		{
 			while (std::getline(myfile, line))
-				catalog.push_back(ImageHandle(line));
+				catalog.push_back(FileImageHandler(line));
 			myfile.close();
 		}
 
-		width = catalog.at(0).image.cols;
-		height = catalog.at(0).image.rows;
+		width = catalog.at(0).Image().cols;
+		height = catalog.at(0).Image().rows;
 	}
  
-	const ImageHandle& ImageAt(int index) { return catalog.at(index); }
+	const ImageHandlerBase& ImageAt(int index) { return catalog.at(index); }
 	int Size() const { return catalog.size(); }
 	int ImageWidth() const { return width; }
 	int ImageHeight() const { return height; }
-	std::vector<ImageHandle>::iterator  begin() {return    catalog.begin(); }
-	std::vector<ImageHandle>::iterator  end()   { return   catalog.end(); }
+	std::vector<ImageHandlerBase>::iterator  begin() {return    catalog.begin(); }
+	std::vector<ImageHandlerBase>::iterator  end()   { return   catalog.end(); }
+};
+
+class ImageMozaicProcessor
+{
+private:
+	std::unique_ptr<ImageCatalog> imageCatalog;
+	std::unique_ptr<ImageHandlerBase> destintImage;
+	std::unique_ptr<Mat> finalImageCanvas;
+	std::vector<ImageHandlerBase> originalImageSections;
+	int wSize;
+
+	void CropDestinationImageIntoSections() {
+		for (int h = 0; h < destintImage->Height() - imageCatalog->ImageHeight(); h += imageCatalog->ImageHeight())
+		{
+			for (int w = 0; w < destintImage->Width() - imageCatalog->ImageWidth(); w += imageCatalog->ImageWidth())
+			{
+				ImageHandlerBase imageHandle = destintImage->CropImage(Rect(w, h, imageCatalog->ImageWidth(), imageCatalog->ImageHeight()));
+				originalImageSections.push_back(imageHandle);
+			}
+		}
+	}
+	void CreateCanva()
+	{
+		finalImageCanvas = std::make_unique<Mat>(destintImage->Image().rows, destintImage->Image().cols, destintImage->Image().type());
+		finalImageCanvas->setTo(0);
+	}
+public:
+	ImageMozaicProcessor(std::string imageCatalogFolderPath, std::string destinationImage)
+	{
+		imageCatalog = std::make_unique<ImageCatalog>(imageCatalogFolderPath);
+		destintImage = std::make_unique<FileImageHandler>(destinationImage);
+		wSize = destintImage->Width() / imageCatalog->ImageWidth();
+		CreateCanva();
+		CropDestinationImageIntoSections();
+	}
+
+	void ProcessImage(std::string destinationFileFullPath)
+	{
+		const double MAX_DISTANCE = 99999999;
+		double bestDistance;
+		
+		Mat finalImageCanvas(destintImage->Image().rows, destintImage->Image().cols, destintImage->Image().type());
+		finalImageCanvas.setTo(0);
+
+		for (auto i = 0; i < originalImageSections.size(); i++)
+		{
+			auto mih = i / wSize;
+			auto miw = i % wSize;
+
+			ImageHandlerBase first = originalImageSections.at(i);
+
+			bestDistance = MAX_DISTANCE;
+
+			ImageHandlerBase* currentBestImage = nullptr;
+			for (auto& currentImage : *imageCatalog)
+			{
+				ImageProcessor imageProcessor(&first, &currentImage);
+
+				double currentDistance = imageProcessor.CalculateDistance();
+				if (currentDistance < bestDistance)
+				{
+					bestDistance = currentDistance;
+					currentBestImage = &currentImage;
+				}
+			}
+			currentBestImage->Image().copyTo(
+											finalImageCanvas(Rect(miw*currentBestImage->Image().cols, mih * currentBestImage->Image().rows,
+											currentBestImage->Image().cols, currentBestImage->Image().rows))
+											);
+			if (i % 100 == 0)
+				ImageSaver::save("C:\\pic\\InProcess" + std::to_string(i) + ".jpg", finalImageCanvas);
+		}
+		ImageSaver::save(destinationFileFullPath, finalImageCanvas);
+	}
 };
 
 
 int main()
 {
-	ImageCatalog imageCatalog("C:\\images\\small");        //path to the catalog image folder, inside small you will have all the small images.
+	std::string smallImagePath;
+	std::string bigImagePath;
+	std::string outputPath;
+	std::cout << "Enter Small Gallery Path:" << std::endl;
+	std::cin >> smallImagePath;
 
-	ImageHandle destinationImage("C:\\pic\\tt.JPG");       //path of the destination image, the image you want to reproduce.
+	std::cout << "Enter Big Image Path:" << std::endl;
+	std::cin >> bigImagePath;
 
-	auto wSize = destinationImage.Width() / imageCatalog.ImageWidth();
-	 
-	std::vector<ImageHandle> originalImageSections;
-	for (auto h = 0; h < destinationImage.Height()- imageCatalog.ImageHeight(); h += imageCatalog.ImageHeight())
-	{
-		for (auto w = 0; w < destinationImage.Width() - imageCatalog.ImageWidth(); w += imageCatalog.ImageWidth())
-		{
-			ImageHandle imageHandle = destinationImage.CropImage(Rect(w, h, imageCatalog.ImageWidth(), imageCatalog.ImageHeight()));
-			originalImageSections.push_back(imageHandle);
-		}	
-	}
+	std::cout << "Enter Destination Path:" << std::endl;
+	std::cin >> outputPath;
 
-	Mat finalImageCanvas(destinationImage.image.rows, destinationImage.image.cols, destinationImage.image.type());
-	finalImageCanvas.setTo(0);
- 
-	for (auto i = 0; i <= originalImageSections.size() - 5; i++)
-	{
-		auto mih = i / wSize;
-		auto miw = i % wSize;
+	ImageMozaicProcessor p(smallImagePath, bigImagePath);
+	p.ProcessImage("outputPath");
 
-		ImageHandle first = originalImageSections.at(i);
-
-		double bestDistance = 99999999;
-
-		ImageHandle* currentBestImage = nullptr;
-		for (auto& currentImage : imageCatalog)
-		{
-			ImageProcessor imageProcessor(&first, &currentImage);
-
-			double currentDistance = imageProcessor.CalculateDistance();
-			if (currentDistance < bestDistance)
-			{
-				bestDistance = currentDistance;
-				currentBestImage = &currentImage;
-			}
-		}
-
-
-		currentBestImage->image.copyTo(finalImageCanvas(Rect(miw*currentBestImage->image.cols, mih * currentBestImage->image.rows, currentBestImage->image.cols, currentBestImage->image.rows)));
-
-		//just to save image in process, remove it later
-		if (i % 100 == 0)
-			ImageSaver::save("C:\\pic\\processImg" + std::to_string(i) + ".jpg", finalImageCanvas);
-		
-	}
-	ImageSaver::save("C:\\pic\\jyilenafinal.jpg", finalImageCanvas);
 	return 0;
 }
+  
