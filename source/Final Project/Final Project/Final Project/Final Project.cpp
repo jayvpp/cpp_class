@@ -1,7 +1,6 @@
 // Final Project.cpp : Defines the entry point for the console application.
 
 #include "stdafx.h"
-
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/core//core.hpp"
 #include "opencv2/opencv.hpp"
@@ -53,22 +52,9 @@ public:
 		this->image = image;
 	}
 
-
 	int Width() const { return image.size().width; }
 	int Height() const { return image.size().height; }
 
-	void DisplayPixels()
-	{
-		for (auto i = 0 ; i < image.rows ; i++)
-		{
-			for (auto j = 0 ; j < image.cols; j++)
-			{
-				auto px = GetPixelAtPosition(i, j);
-				std::cout << "B: " << px.blue << "G: " << px.green << "R: " << px.red << std::endl;
-			}
-		}
-
-	}
 	PixelPacked GetPixelAtPosition(int row,int col)
 	{
 		PixelPacked pixel(image.at<Vec3b>(row, col)[0], image.at<Vec3b>(row, col)[1], image.at<Vec3b>(row, col)[2]);
@@ -80,7 +66,6 @@ public:
 		Mat croppedImg = image(rectangle);
 		return ImageHandle(croppedImg);
 	}
- 
 };
 
 class ImageSaver
@@ -159,8 +144,8 @@ public:
 			myfile.close();
 		}
 
-		width = catalog.at(0).image.rows;
-		height = catalog.at(0).image.cols;
+		width = catalog.at(0).image.cols;
+		height = catalog.at(0).image.rows;
 	}
  
 	const ImageHandle& ImageAt(int index) { return catalog.at(index); }
@@ -176,29 +161,29 @@ int main()
 {
 	ImageCatalog imageCatalog("C:\\images\\small");        //path to the catalog image folder, inside small you will have all the small images.
 
-	ImageHandle destinationImage("C:\\pic\\jy.JPG");       //path of the destination image, the image you want to reproduce.
+	ImageHandle destinationImage("C:\\pic\\tt.JPG");       //path of the destination image, the image you want to reproduce.
 
-	auto wcount = destinationImage.Width() / imageCatalog.ImageWidth();
-
-	std::vector<ImageHandle> OriginalImagesSplittledHandle;
+	auto wSize = destinationImage.Width() / imageCatalog.ImageWidth();
+	 
+	std::vector<ImageHandle> originalImageSections;
 	for (auto h = 0; h < destinationImage.Height()- imageCatalog.ImageHeight(); h += imageCatalog.ImageHeight())
 	{
 		for (auto w = 0; w < destinationImage.Width() - imageCatalog.ImageWidth(); w += imageCatalog.ImageWidth())
 		{
-			ImageHandle imageHandle = destinationImage.CropImage(Rect(w, h, imageCatalog.ImageWidth(), imageCatalog.ImageWidth()));
-			OriginalImagesSplittledHandle.push_back(imageHandle);
+			ImageHandle imageHandle = destinationImage.CropImage(Rect(w, h, imageCatalog.ImageWidth(), imageCatalog.ImageHeight()));
+			originalImageSections.push_back(imageHandle);
 		}	
 	}
 
 	Mat finalImageCanvas(destinationImage.image.rows, destinationImage.image.cols, destinationImage.image.type());
 	finalImageCanvas.setTo(0);
  
-	for (auto i = 0; i <= OriginalImagesSplittledHandle.size() - 5; i++)
+	for (auto i = 0; i <= originalImageSections.size() - 5; i++)
 	{
-		auto mih = i / wcount;
-		auto miw = i % wcount;
+		auto mih = i / wSize;
+		auto miw = i % wSize;
 
-		ImageHandle first = OriginalImagesSplittledHandle.at(i);
+		ImageHandle first = originalImageSections.at(i);
 
 		double bestDistance = 99999999;
 
