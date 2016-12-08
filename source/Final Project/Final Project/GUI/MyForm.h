@@ -1,4 +1,12 @@
 #pragma once
+#include "..\Final Project\FileImageHandler.h"
+//#include "..\Final Project\FileImageHandler.h"
+//#include "..\Final Project\ImageCatalog.h"
+//#include "..\Final Project\ImageHandlerBase.h"
+//#include "..\Final Project\ImageMozaicProcessor.h"
+//#include "..\Final Project\ImageProcessor.h"
+//#include "..\Final Project\ImageSaver.h"
+//#include "..\Final Project\InMemoryImageHandler.h"
 #include "..\Final Project\PixelPacket.h"
 #include <string>
 

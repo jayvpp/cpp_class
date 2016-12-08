@@ -7,5 +7,5 @@ class FileImageHandler : public ImageHandlerBase
 private:
 	std::string path;
 public:
-	FileImageHandler(std::string path) : path(path) { image = imread(path); }
+	FileImageHandler(std::string path) : path(path) { image =  cv::imread(path); }
 };
