@@ -1,5 +1,7 @@
-﻿  Final Project.cpp
-c:\users\jason\desktop\school\cpp_class\source\final project\final project\final project\final project.cpp(135): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\jason\desktop\school\cpp_class\source\final project\final project\final project\final project.cpp(136): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Final Project.vcxproj -> C:\Users\jason\Desktop\school\cpp_class\source\Final Project\Final Project\x64\Debug\Final Project.exe
-  Final Project.vcxproj -> C:\Users\jason\Desktop\school\cpp_class\source\Final Project\Final Project\x64\Debug\Final Project.pdb (Full PDB)
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Final Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  stdafx.cpp
+  Final Project.cpp
+c:\school\cpp_class\source\final project\final project\final project\final project.cpp(166): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Final Project.vcxproj -> C:\school\cpp_class\source\Final Project\Final Project\x64\Debug\ImageCollage.exe
+  Final Project.vcxproj -> C:\school\cpp_class\source\Final Project\Final Project\x64\Debug\ImageCollage.pdb (Full PDB)

@@ -2,13 +2,11 @@
 
 #include "stdafx.h"
 
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/core//core.hpp"
 #include "opencv2/opencv.hpp"
 #include <iostream>
 #include <fstream>
-#include  <memory>
-#include  <vector>
+#include <memory>
+#include <vector>
 
 using namespace cv;
 typedef unsigned char byte;
@@ -68,8 +66,6 @@ public:
 	{
 		this->image = image;
 	}
-	int Width() const { return image.size().width; }
-	int Height() const { return image.size().height; }
 };
 
 class FileImageHandler : public ImageHandlerBase

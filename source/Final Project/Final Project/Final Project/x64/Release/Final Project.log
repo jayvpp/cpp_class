@@ -1,0 +1,8 @@
+﻿  Final Project.cpp
+Final Project.cpp(166): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  stdafx.cpp
+  Generating code
+  All 452 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Final Project.vcxproj -> C:\school\cpp_class\source\Final Project\Final Project\x64\Release\ImageCollage.exe
+  Final Project.vcxproj -> C:\school\cpp_class\source\Final Project\Final Project\x64\Release\ImageCollage.pdb (Full PDB)
