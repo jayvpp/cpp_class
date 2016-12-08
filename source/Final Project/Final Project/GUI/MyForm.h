@@ -52,7 +52,7 @@ namespace GUI {
 	protected:
 
 	private:
-		System::String^ smallImagePath;
+		array<String^>^ smallImagePath; //System::String^ smallImagePath;
 		System::String^ bigImagePath;
 		System::String^ outputPath;
 
@@ -134,7 +134,6 @@ namespace GUI {
 #pragma endregion
 	// Event Handlers 
 	private: System::Void btn_SourceImage_Click(System::Object^  sender, System::EventArgs^  e) {
-
 		bigImagePath = ""; // ensure we do not save an old path
 		OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog(); // instantiate OpenFileDialog
 
@@ -145,7 +144,13 @@ namespace GUI {
 	}
 
 	private: System::Void btn_SmallGallery_Click(System::Object^  sender, System::EventArgs^  e) {
+		OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog(); // instantiate OpenFileDialog
+		openFileDialog1->Multiselect = true;
 
+		if (openFileDialog1->ShowDialog(this) == System::Windows::Forms::DialogResult::OK) // ShowDialog
+		{
+			smallImagePath = openFileDialog1->FileNames;
+		}
 	}
 
 	private: System::Void btn_Quit_Click(System::Object^  sender, System::EventArgs^  e) {
