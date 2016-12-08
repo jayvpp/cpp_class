@@ -1,13 +1,13 @@
 #pragma once
 #include "..\Final Project\FileImageHandler.h"
-//#include "..\Final Project\FileImageHandler.h"
-//#include "..\Final Project\ImageCatalog.h"
-//#include "..\Final Project\ImageHandlerBase.h"
-//#include "..\Final Project\ImageMozaicProcessor.h"
-//#include "..\Final Project\ImageProcessor.h"
-//#include "..\Final Project\ImageSaver.h"
-//#include "..\Final Project\InMemoryImageHandler.h"
+#include "..\Final Project\ImageCatalog.h"
+#include "..\Final Project\ImageHandlerBase.h"
+#include "..\Final Project\ImageMozaicProcessor.h"
+#include "..\Final Project\ImageProcessor.h"
+#include "..\Final Project\ImageSaver.h"
+#include "..\Final Project\InMemoryImageHandler.h"
 #include "..\Final Project\PixelPacket.h"
+#include <msclr\marshal_cppstd.h>
 #include <string>
 
 namespace GUI {
@@ -52,9 +52,9 @@ namespace GUI {
 	protected:
 
 	private:
-		std::string* smallImagePath;
-		std::string* bigImagePath;
-		std::string* outputPath;
+		System::String^ smallImagePath;
+		System::String^ bigImagePath;
+		System::String^ outputPath;
 
 	private:
 		/// <summary>
@@ -134,10 +134,14 @@ namespace GUI {
 #pragma endregion
 	// Event Handlers 
 	private: System::Void btn_SourceImage_Click(System::Object^  sender, System::EventArgs^  e) {
-		PixelPacked c(10, 20, 19);
 
-		String ^ s = Convert::ToString(c.red);
-		MessageBox::Show(s);
+		bigImagePath = ""; // ensure we do not save an old path
+		OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog(); // instantiate OpenFileDialog
+
+		if (openFileDialog1->ShowDialog(this) == System::Windows::Forms::DialogResult::OK) // ShowDialog
+		{
+			bigImagePath = Convert::ToString(openFileDialog1->InitialDirectory + openFileDialog1->FileName); // store fileName
+		}
 	}
 
 	private: System::Void btn_SmallGallery_Click(System::Object^  sender, System::EventArgs^  e) {
