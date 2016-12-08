@@ -1,0 +1,4 @@
+﻿  MyForm.cpp
+  MyForm.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  GUI.vcxproj -> C:\Users\Arrow\Google Drive\2016School\COP2335C\cpp_class\cpp_class\source\Final Project\Final Project\x64\Debug\GUI.exe
+  GUI.vcxproj -> C:\Users\Arrow\Google Drive\2016School\COP2335C\cpp_class\cpp_class\source\Final Project\Final Project\x64\Debug\GUI.pdb (Partial PDB)
