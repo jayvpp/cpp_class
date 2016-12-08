@@ -1,7 +1,13 @@
 ﻿  Final Project.cpp
-Final Project.cpp(165): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  stdafx.cpp
-  Generating code
-  All 445 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  Final Project.vcxproj -> C:\Users\Arrow\Google Drive\2016School\COP2335C\FinalProjectGUI\cpp_class\source\Final Project\Final Project\x64\Release\ImageCollage.exe
+c:\users\jason\desktop\school ok\cpp_class\source\final project\final project\final project\ImageCatalog.h(34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\memory(1630): error C2664: 'ImageCatalog::ImageCatalog(ImageCatalog &&)': cannot convert argument 1 from 'std::vector<char *,std::allocator<_Ty>>' to 'std::string'
+          with
+          [
+              _Ty=char *
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\memory(1630): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  c:\users\jason\desktop\school ok\cpp_class\source\final project\final project\final project\ImageMozaicProcessor.h(35): note: see reference to function template instantiation 'std::unique_ptr<ImageCatalog,std::default_delete<_Ty>> std::make_unique<ImageCatalog,std::vector<char *,std::allocator<char*>>&>(std::vector<char *,std::allocator<char*>> &)' being compiled
+          with
+          [
+              _Ty=ImageCatalog
+          ]

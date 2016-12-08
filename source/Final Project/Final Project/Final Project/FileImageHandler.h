@@ -1,8 +1,6 @@
 #pragma once
-#include "ImageHandlerBase.h"
 #include <string>
-
-
+#include "ImageHandlerBase.h"
 class FileImageHandler : public ImageHandlerBase
 {
 

@@ -30,9 +30,9 @@ private:
 		finalImageCanvas->setTo(0);
 	}
 public:
-	ImageMozaicProcessor(std::string imageCatalogFolderPath, std::string destinationImage)
+	ImageMozaicProcessor(std::vector<char*> smallImagePath, std::string destinationImage)
 	{
-		imageCatalog = std::make_unique<ImageCatalog>(imageCatalogFolderPath);
+		imageCatalog = std::make_unique<ImageCatalog>(smallImagePath);
 		destintImage = std::make_unique<FileImageHandler>(destinationImage);
 		wSize = destintImage->Width() / imageCatalog->ImageWidth();
 		CreateCanva();
@@ -73,8 +73,8 @@ public:
 					currentBestImage->Image().cols, currentBestImage->Image().rows))
 				);
 			if (i % 100 == 0)
-				ImageSaver::save("C:\\pic\\InProcess" + std::to_string(i) + ".jpg", finalImageCanvas);
+				ImageSaver::save(destinationFileFullPath + "-InProgress-" + std::to_string(i) + ".jpg", finalImageCanvas);
 		}
-		ImageSaver::save(destinationFileFullPath, finalImageCanvas);
+		ImageSaver::save(destinationFileFullPath + ".jpg", finalImageCanvas);
 	}
 };

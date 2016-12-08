@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageCollage", "Final Project\Final Project.vcxproj", "{2B34CAE7-3D27-49AC-BD27-FA63C410D24F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "..\..\..\..\..\cpp_class\cpp_class\source\Final Project\Final Project\GUI\GUI.vcxproj", "{970B684D-85A9-4EA3-8E7C-95C8AFFB5192}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcxproj", "{970B684D-85A9-4EA3-8E7C-95C8AFFB5192}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

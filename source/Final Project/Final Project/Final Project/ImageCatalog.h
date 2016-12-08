@@ -13,18 +13,14 @@ private:
 	int height;
 	std::vector<ImageHandlerBase> catalog;
 public:
-	ImageCatalog(std::string catalogPath)
+	ImageCatalog(std::vector<char*> catalogImagePath)
 	{
 		//this need to be replace with the function to detect files in folder.
-		std::ifstream myfile;
-		myfile.open("C:\\pic\\pic.txt");
-		std::string line;
-		if (myfile.is_open())
-		{
-			while (std::getline(myfile, line))
-				catalog.push_back(FileImageHandler(line));
-			myfile.close();
-		}
+	 
+
+		for (auto& file : catalogImagePath)
+			catalog.push_back(FileImageHandler(std::string(file)));
+	 
 
 		width = catalog.at(0).Image().cols;
 		height = catalog.at(0).Image().rows;
