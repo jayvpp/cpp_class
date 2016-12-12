@@ -19,9 +19,6 @@
 
 int main()
 {
-
-	std::cout << "Crap:" << std::endl;
-
 	std::string smallImagePath;
 	std::string bigImagePath;
 	std::string outputPath;
